@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodeapp
+  labels:
+    app: nodeapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodeapp
+  
+  template:
+    metadata:
+      name: nodeapp
+      labels:     
+        app: nodeapp
+    spec:
+      containers:
+      - name: nodeapp
+        image: shahenvaz7/nodeapp:4.0
+        ports:
+          - containerPort: 27017
+      imagePullSecrets:
+      - name: shahenvaz-secret
+
