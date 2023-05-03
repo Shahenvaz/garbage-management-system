@@ -18,9 +18,9 @@ spec:
     spec:
       containers:
       - name: nodeapp
-        image: shahenvaz7/nodeapp:4.0
+        image: shahenvaz7/node:6.0
         ports:
-          - containerPort: 27017
+          - containerPort: 8081
       imagePullSecrets:
       - name: shahenvaz-secret
 
