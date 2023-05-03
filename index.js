@@ -2,7 +2,6 @@ const express = require('express')
 const app = new express()
 require("dotenv").config()
 const {Connection}  = require('./database')
-
 const Prometheus = require('prom-client')
 const db =  new Connection
 
@@ -30,10 +29,11 @@ app.get('/metrics', async (req, res) => {
     res.setHeader('Content-Type', register.contentType);
     res.send(await register.metrics());
 });
-    
+
 
 
 //end metric
+
 
 app.get('/',(req,res)=>{
     res.render('index')
