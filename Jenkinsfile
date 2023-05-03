@@ -2,33 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('build')
+        stage('testing')
         {
             steps{
-                sh 'docker build -t nodeadd .'
-            }
-            
-        }
-        stage('tagging')
-        {
-            steps{
-                sh 'docker tag nodeapp shahenvaz7/nodeapp:20'
+                sh 'npm test'
             }
         }
-        stage('docker push image')
-        {
-            steps
-            {
-                sh 'docker push shahenvaz7/nodeapp:20'
-            }
-        }
-        stage('deploying to kubernetes') {
-            steps {
-                withKubeConfig([credentialsId: '591250ef-950e-4c63-8677-5b65fa983fce']){
-                    sh 'kubectl set image deployment/nodeapp nodeapp=shahenvaz7/nodeapp:15'   
-                }
-            }
-        }
-        
     }
 }
