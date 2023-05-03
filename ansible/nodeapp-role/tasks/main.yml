@@ -1,0 +1,27 @@
+---
+# tasks file for nodeapp-role
+- name: install java
+  apt:
+    update_cache: true
+    name: openjdk-11-jdk
+
+- name: Add Jenkins repository key
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    state: present
+
+- name: Add Jenkins repository
+  apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ 
+    state: present
+
+- name: Install Jenkins
+  apt:
+    name: jenkins
+    state: present
+
+- name: Start Jenkins service
+  service:
+    name: jenkins
+    state: started
+    enabled: true

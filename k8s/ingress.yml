@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+spec:
+  ingressClassName: nginx-example
+  rules:
+  - host: hello-world.info
+    http:
+        paths:
+          - path: /nodeapp
+            pathType: Prefix
+            backend:
+              service:
+                name: nodeappservice 
+                port: 
+                  number: 8081
+          - path: /mongodb
+            pathType: Prefix
+            backend:
+              service:
+                name: mongodbservice
+                port: 
+                  number: 27017
+
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: minimal-ingress
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /
+# spec:
+#   ingressClassName: nginx-example
+#   rules:
+#   - http:
+#       paths:
+#       - path: /testpath
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: test
+#             port:
+#               number: 80
