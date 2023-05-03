@@ -4,15 +4,23 @@ pipeline {
     stages {
         stage('build')
         {
-            sh 'docker build -t nodeadd .'
+            steps{
+                sh 'docker build -t nodeadd .'
+            }
+            
         }
         stage('tagging')
         {
-            sh 'docker tag nodeapp shahenvaz7/nodeapp:20'
+            steps{
+                sh 'docker tag nodeapp shahenvaz7/nodeapp:20'
+            }
         }
         stage('docker push image')
         {
-            sh 'docker push shahenvaz7/nodeapp:20'
+            steps
+            {
+                sh 'docker push shahenvaz7/nodeapp:20'
+            }
         }
         stage('deploying to kubernetes') {
             steps {
