@@ -1,4 +1,4 @@
-def GIT_COMMIT_HASH = sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)
+def GIT_COMMIT_HASH = ${sh (script: "git log -n 1 --pretty=format:'%H'", returnStdout: true)}
 pipeline {
     agent any
 
