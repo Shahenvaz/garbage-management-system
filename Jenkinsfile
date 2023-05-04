@@ -5,13 +5,13 @@ pipeline {
         stage('build')
         {
             steps{
-                sh 'npm update'
+                sh 'docker build -t nodeapp'
             }
             
         }
         stage('deploying to testing') {
             steps {
-                sh 'npm start'
+                sh 'docker run -dp 8081:8081 nodeapp'
             }
         }
         stage('testing')
