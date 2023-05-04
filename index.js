@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metric
+//graphana metric for node
 
 const client = require('prom-client');
 
