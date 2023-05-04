@@ -8,7 +8,7 @@ pipeline {
         stage('build')
         {
             steps{
-                sh 'docker build -t nodeapp .'
+                sh 'docker build -t nodeapp  .'
             }
             
         }
