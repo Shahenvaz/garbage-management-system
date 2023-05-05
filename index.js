@@ -9,8 +9,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metricss is the best thing to do shahenvaz khan is best hai and hai ok hai hai
-//nahi hai
+//graphana metrics
 
 const client = require('prom-client');
 
