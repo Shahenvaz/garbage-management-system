@@ -9,8 +9,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metrics is working yes i know that
-
 const client = require('prom-client');
 
 // Create a Registry to register the metrics
