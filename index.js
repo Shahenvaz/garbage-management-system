@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metrics is working yes
+//graphana metrics is working yes i know that
 
 const client = require('prom-client');
 
