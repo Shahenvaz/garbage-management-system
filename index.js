@@ -32,7 +32,7 @@ app.get('/metrics', async (req, res) => {
 
 
 
-//end metric
+//end metrics
 
 
 app.get('/',(req,res)=>{
