@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metricss is the best thing to do shahenvaz khan
+//graphana metricss is the best thing to do shahenvaz khan is best
 
 const client = require('prom-client');
 
