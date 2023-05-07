@@ -32,7 +32,7 @@ pipeline {
                     sh 'kubectl apply -f k8s/mongodb.yml'
                     sh 'kubectl apply -f k8s/mongodbservice.yml'
                     sh 'kubectl set image deployment/nodeapp nodeapp=shahenvaz7/nodeapp:$(printenv CH)'   
-                    sh 'kubectl autoscale deployment nodeapp --cpu-percent=5 --min=2 --max=10'
+                    // sh 'kubectl autoscale deployment nodeapp --cpu-percent=5 --min=2 --max=10'
 
                 }
             }
