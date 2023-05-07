@@ -8,5 +8,3 @@ spec:
   ports:
   - targetPort: 27017
     port: 27017
-    nodePort: 30001
-  type: NodePort
