@@ -9,6 +9,18 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
+// cookies work start here
+
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+// cookies work end here
+
+
+
+
+
+
 //graphana metrics
 
 const client = require('prom-client');
@@ -50,8 +62,12 @@ app.get('/',(req,res)=>{
 
 // admin login work
 
+
 app.get('/admin-login',(req,res)=>{
-    res.render('admin/login')
+    let warning = req.cookies.warning
+    console.log(warning);
+    res.clearCookie('warning')
+    res.render('admin/login',{warning:warning})
 })
 
 app.get('/admin-sign-up',(req,res)=>{
@@ -62,6 +78,21 @@ app.post('/admin-sign-up',(req,res)=>{
     db.adminSignUp(req.body)
     res.redirect('/admin-login')
 })
+
+app.post('/admin-login',async (req,res)=>{
+    result = await db.adminLoginCheck(req.body)
+    if(result.length)
+    {
+        res.redirect('/admin-dashboard')
+    }
+    else
+    {
+        res.cookie("warning","wrong email id or password unable to login")
+        res.redirect('/admin-login')
+    }
+})
+
+
 
 // admin login finish
 
