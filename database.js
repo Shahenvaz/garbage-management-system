@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb')
 
 class Connection {
-    url = "mongodb://10.244.0.150"
+    url = "mongodb://mongodbservice"
     client = new MongoClient(this.url)
     database = this.client.db('garbage-management-system')
     collection = this.database.collection('AdminDetails')
