@@ -9,12 +9,19 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-//graphana metric
+//graphana metrics
 
 const client = require('prom-client');
 
+
 // Create a Registry to register the metrics
 const register = new client.Registry();
+
+// const resource = 'example-resource';
+// const value = 42;
+// register.labels(resource).set(value);
+
+
 client.collectDefaultMetrics({register});
 
 client.collectDefaultMetrics({
@@ -25,6 +32,8 @@ client.collectDefaultMetrics({
     register
 });
 
+
+console.log(client)
 app.get('/metrics', async (req, res) => {
     res.setHeader('Content-Type', register.contentType);
     res.send(await register.metrics());

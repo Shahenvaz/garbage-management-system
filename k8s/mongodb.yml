@@ -18,7 +18,15 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongodb/mongodb-community-server:6.0-ubi8
+        image: mongo:latest
         ports:
           - containerPort: 27017
+        volumeMounts:
+        - name: mongo-volume
+          mountPath: /data/db
+
+      volumes:
+      - name: mongo-volume
+        hostPath:
+          path: /home/knoldus/mongodb/
 
