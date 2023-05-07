@@ -7,6 +7,4 @@ spec:
     app: nodeapp
   ports:
   - targetPort: 8081
-    nodePort: 30002
     port: 8081
-  type: NodePort
