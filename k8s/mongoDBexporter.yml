@@ -1,5 +1,5 @@
 mongodb:
-  uri: "mongodb://mongodbservice:30001/"
+  uri: "mongodb://mongodbservice"
 
 serviceMonitor:
   additionalLabels: 
