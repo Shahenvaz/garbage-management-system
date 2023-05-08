@@ -15,6 +15,16 @@ class Connection {
         let response = await this.collection.find(params).toArray()     
         return response
     }
+    adminLoginCheck = async function(params) {
+        this.collection = this.database.collection('AdminDetails')
+        let response = await this.collection.find(params).toArray()     
+        return response
+    }
+    getAllAdminDetails = async function(params) {
+        this.collection = this.database.collection('AdminDetails')
+        let response = await this.collection.find().toArray()     
+        return response
+    }
 
 
 }

@@ -60,12 +60,12 @@ app.get('/',(req,res)=>{
     res.render('index')
 })
 
-// admin login work
 
+
+// admin login work
 
 app.get('/admin-login',(req,res)=>{
     let warning = req.cookies.warning
-    console.log(warning);
     res.clearCookie('warning')
     res.render('admin/login',{warning:warning})
 })
@@ -83,6 +83,7 @@ app.post('/admin-login',async (req,res)=>{
     result = await db.adminLoginCheck(req.body)
     if(result.length)
     {
+        res.cookie('adminInformation',result)
         res.redirect('/admin-dashboard')
     }
     else
@@ -91,10 +92,31 @@ app.post('/admin-login',async (req,res)=>{
         res.redirect('/admin-login')
     }
 })
-
-
-
 // admin login finish
+
+// admin Dashboard start
+
+app.get('/admin-dashboard',async(req,res)=>{
+    let adminInfo = req.cookies.adminInformation
+    let data = await db.getAllAdminDetails()
+    if(adminInfo)
+    res.render('admin/dashboard',{adminInfo:adminInfo,data:data})
+    else
+    res.redirect('/admin-login')
+})
+
+//admin Dashboard End
+
+
+//admin log out
+
+app.get('/admin-logout',(req,res)=>{
+
+    res.clearCookie('adminInformation')
+    res.redirect('/admin-login')
+})
+
+//admin log out end
 
 
 app.listen(process.env.PORT, ()=>{

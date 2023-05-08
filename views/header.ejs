@@ -27,10 +27,9 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
-
+  
   <!-- alert css -->
   <link href="assets/css/alert.css" rel="stylesheet">
-
 
     <!-- cdn for awesome fonts icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -61,7 +60,12 @@
           <li><a class="nav-link scrollto"  href="#cta"><span class="fa fa-edit"> Preview Complain </span></a></li>
           <!-- <li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
           <li><a class="nav-link scrollto" href="#faq"><span class="fa fa-question-circle"> FAQ</span></a></li>
-          <li><a class="nav-link scrollto" href="logout-user.php"><span class="fas fa-sign-out-alt">Logout</span></a></li>
+          
+          <% if(locals.adminInfo) { %>
+          
+          <li><a class="nav-link scrollto"><span class="fa fa-user"> welcome <%= adminInfo[0]["admin-name"] %></span></a></li>
+          <li><a class="nav-link scrollto" href="/admin-logout"><span class="fas fa-sign-out-alt">Logout</span></a></li>
+          <% }%>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
