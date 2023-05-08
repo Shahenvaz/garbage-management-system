@@ -3,7 +3,7 @@
 - name: install java
   apt:
     update_cache: true
-    name: openjdk-11-jdk
+    name: "{{ java_version }}"
 
 - name: Add Jenkins repository key
   apt_key:
@@ -19,9 +19,4 @@
   apt:
     name: jenkins
     state: present
-
-- name: Start Jenkins service
-  service:
-    name: jenkins
-    state: started
-    enabled: true
+  notify: Start Jenkins service

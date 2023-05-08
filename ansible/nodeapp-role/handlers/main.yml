@@ -1,2 +1,7 @@
 ---
 # handlers file for nodeapp-role
+- name: Start Jenkins service
+  service:
+    name: jenkins
+    state: started
+    enabled: true
