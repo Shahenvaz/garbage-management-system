@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-// cookies work start here
+// cookies work start here ok
 
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
