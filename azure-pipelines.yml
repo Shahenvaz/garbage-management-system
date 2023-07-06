@@ -22,7 +22,7 @@ stages:
     steps:
     - script: docker build -t shahenvaz7/nodeapp:'$(Build.BuildId)' .
 
-- stage: Pushing to docker 
+- stage: Pushing_to_docker 
   displayName: Pushing to docker hub registry
   jobs:
   - job: Pushing
