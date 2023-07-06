@@ -26,4 +26,3 @@ stages:
     - script: kubectl apply -f k8s/nodeService.yml
     - script: kubectl apply -f k8s/mongodb.yml
     - script: kubectl apply -f k8s/mongodbservice.yml
-    - scirpt: kubectl set image deployment/nodeapp nodeapp=shahenvaz7/nodeapp:'$(Build.BuildId)' 
