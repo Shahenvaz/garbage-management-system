@@ -18,7 +18,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      Default
+      vmImage: 'Ubuntu 20.04'
     steps:
     - script: docker build -t shahenvaz7/nodeapp:'$(Build.BuildId)' .
 
