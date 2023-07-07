@@ -19,3 +19,28 @@ stages:
     displayName: Build
     steps:
     - script: docker build -t shahenvaz7/nodeapp:'$(Build.BuildId)' .
+    
+- stage: Pushing_to_docker 
+  displayName: Pushing to docker hub registry
+  jobs:
+  - job: Pushing
+    displayName: Pushing
+    pool:
+      Default
+    steps:
+    - script: docker push shahenvaz7/nodeapp:'$(Build.BuildId)'
+    
+- stage: Deployment
+  displayName: Deployment to k8s
+  jobs:
+  - job: Deployment
+    displayName: Deployment
+    pool:
+      Default
+    steps:
+    - script: kubectl apply -f k8s/nodeApp.yml
+    - script: kubectl apply -f k8s/nodeService.yml
+    - script: kubectl apply -f k8s/mongodb.yml
+    - script: kubectl apply -f k8s/mongodbservice.yml
+    - script: kubectl set image deployment/nodeapp nodeapp=shahenvaz7/nodeapp:'$(Build.BuildId)'
+
