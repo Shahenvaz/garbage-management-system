@@ -19,6 +19,16 @@ stages:
     displayName: Build
     steps:
     - script: docker build -t shahenvaz7/nodeapp:'$(Build.BuildId)' .
+
+stages:
+- stage: Uploading artifacts
+  displayName: Upload artifacts
+  jobs:
+  - job: uploading artifacts
+    displayName: uploading artifacts
+    steps:
+    - script: npm publish
+    
     
 - stage: Pushing_to_docker 
   displayName: Pushing to docker hub registry
