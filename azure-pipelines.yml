@@ -17,7 +17,5 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      shahenvaz-agent
     steps:
     - script: docker build -t shahenvaz7/nodeapp:'$(Build.BuildId)' .
