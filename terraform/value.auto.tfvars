@@ -1,0 +1,9 @@
+project_name = "mohd shahenvaz khan"
+visibility = "private"
+version_control = "Git"
+work_item_template="Basic"
+agent_pool_name="mymachine"
+auto_provision = false
+auto_update= false
+repo_name="garbage-management-system"
+pipeline_name="gms-pipeline"
