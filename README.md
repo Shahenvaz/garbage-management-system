@@ -1,4 +1,4 @@
-# garbage-management-system
+#  Assessment Exercise: DevOps Hands-on Challenge
 
 [step 1]
 Firstly you need to have a azure account to use terraform to setup azure pipeline for you.
