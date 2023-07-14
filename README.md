@@ -15,8 +15,5 @@ Terraform apply
 ```
 command to initialize, plan and apply the changes.
 
-[step 4]
-
-
 
 
